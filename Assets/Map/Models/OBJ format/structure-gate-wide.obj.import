@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cunxn17lvxtup"
+path="res://.godot/imported/structure-gate-wide.obj-8c0a687126ca88e85bf67f52b0ca361f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-gate-wide.obj-8c0a687126ca88e85bf67f52b0ca361f.mesh"]
+
+source_file="res://Assets/Map/Models/OBJ format/structure-gate-wide.obj"
+dest_files=["res://.godot/imported/structure-gate-wide.obj-8c0a687126ca88e85bf67f52b0ca361f.mesh", "res://.godot/imported/structure-gate-wide.obj-8c0a687126ca88e85bf67f52b0ca361f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

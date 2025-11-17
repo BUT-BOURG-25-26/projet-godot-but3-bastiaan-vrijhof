@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://di8yigmu7pdkb"
+path="res://.godot/imported/round-corner-c.obj-62932db07db20b724343f9271b4d710f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/round-corner-c.obj-62932db07db20b724343f9271b4d710f.mesh"]
+
+source_file="res://Assets/Map/Models/OBJ format/round-corner-c.obj"
+dest_files=["res://.godot/imported/round-corner-c.obj-62932db07db20b724343f9271b4d710f.mesh", "res://.godot/imported/round-corner-c.obj-62932db07db20b724343f9271b4d710f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

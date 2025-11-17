@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c25hy5rrg0ojr"
+path="res://.godot/imported/spline-concave-straight-hill-beginning.obj-6d41aedb5a342d4f96905b34f1e52fbc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spline-concave-straight-hill-beginning.obj-6d41aedb5a342d4f96905b34f1e52fbc.mesh"]
+
+source_file="res://Assets/Characters/Models/OBJ format/spline-concave-straight-hill-beginning.obj"
+dest_files=["res://.godot/imported/spline-concave-straight-hill-beginning.obj-6d41aedb5a342d4f96905b34f1e52fbc.mesh", "res://.godot/imported/spline-concave-straight-hill-beginning.obj-6d41aedb5a342d4f96905b34f1e52fbc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
