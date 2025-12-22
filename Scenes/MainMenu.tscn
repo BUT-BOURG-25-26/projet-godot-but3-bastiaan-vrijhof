@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbqyfnqtd7bun"]
+
+[ext_resource type="Script" uid="uid://chf5sqdww118q" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_tt5f1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 230.0
+offset_right = 580.0
+offset_bottom = 174.0
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Jouer"
+
+[node name="ScoreButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Meilleurs Scores"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="ScorePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.0
+offset_top = -100.0
+offset_right = 4.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_right = 26.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Top 10"
+
+[node name="ScoreList" type="ItemList" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 37.0
+offset_right = 334.0
+offset_bottom = 140.0
+
+[node name="CloseButton" type="Button" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.75
+offset_top = -44.0
+offset_right = 80.75
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Fermer"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScoreButton" to="." method="_on_score_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ScorePanel/CloseButton" to="." method="_on_close_button_pressed"]

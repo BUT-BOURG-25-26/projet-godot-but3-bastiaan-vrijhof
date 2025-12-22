@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Moteur3D-Projet-Template"
-run/main_scene="uid://nvhei1ljgd4j"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="uid://dbqyfnqtd7bun"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*res://Scripts/game.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -29,5 +38,5 @@ Press={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

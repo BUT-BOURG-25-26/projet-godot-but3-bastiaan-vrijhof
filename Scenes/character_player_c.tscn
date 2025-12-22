@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0f88k8d0wl01"]
+
+[ext_resource type="PackedScene" uid="uid://bt4uuqfd8g34" path="res://Assets/Characters/Models/FBX format/character-female-c.fbx" id="1_6kaf1"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jie0c"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_81m8i"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6kaf1"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eb8d8"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jie0c"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_81m8i"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"isJumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ds350"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"isFalling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tceov"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"isFalling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajw08"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"isSprinting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iksts"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tceov"]
+states/End/position = Vector2(1286, 57)
+states/Start/position = Vector2(214, 100)
+states/die/node = SubResource("AnimationNodeAnimation_jie0c")
+states/die/position = Vector2(806, 100)
+states/fall/node = SubResource("AnimationNodeAnimation_81m8i")
+states/fall/position = Vector2(628, 31)
+states/jump/node = SubResource("AnimationNodeAnimation_6kaf1")
+states/jump/position = Vector2(613, 210)
+states/sprint/node = SubResource("AnimationNodeAnimation_eb8d8")
+states/sprint/position = Vector2(549, 100)
+transitions = ["Start", "sprint", SubResource("AnimationNodeStateMachineTransition_jie0c"), "sprint", "jump", SubResource("AnimationNodeStateMachineTransition_81m8i"), "sprint", "fall", SubResource("AnimationNodeStateMachineTransition_ds350"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_tceov"), "fall", "sprint", SubResource("AnimationNodeStateMachineTransition_ajw08"), "sprint", "die", SubResource("AnimationNodeStateMachineTransition_iksts")]
+
+[node name="character-female-c" instance=ExtResource("1_6kaf1")]
+
+[node name="Skeleton3D" parent="character-female-c" index="0"]
+bones/0/position = Vector3(0, 0.1, 0)
+bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/4/position = Vector3(0.09989679, 0.11150001, 0.011500001)
+bones/4/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/5/position = Vector3(-0.09989679, 0.11150001, 0.011500001)
+bones/5/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/6/position = Vector3(0, 0.16699998, 0.026388764)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_tceov")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDying = false
+parameters/conditions/isFalling = false
+parameters/conditions/isJumping = false
+parameters/conditions/isSprinting = false

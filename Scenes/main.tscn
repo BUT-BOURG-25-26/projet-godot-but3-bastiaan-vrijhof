@@ -1,46 +1,55 @@
-[gd_scene load_steps=10 format=3 uid="uid://nvhei1ljgd4j"]
+[gd_scene load_steps=17 format=3 uid="uid://nvhei1ljgd4j"]
 
 [ext_resource type="Script" uid="uid://dom64x0yaijhq" path="res://Scripts/level.gd" id="1_kry3j"]
-[ext_resource type="PackedScene" uid="uid://buheo0nw30hf" path="res://Scenes/Modules/module1.tscn" id="2_21xkr"]
-[ext_resource type="PackedScene" uid="uid://bk57dafpujis8" path="res://Scenes/Modules/module2.tscn" id="3_6bp64"]
-[ext_resource type="PackedScene" uid="uid://ql5sh1nnbdok" path="res://Scenes/Modules/module3.tscn" id="4_344ge"]
-[ext_resource type="PackedScene" uid="uid://bmkxw5gfv6rjg" path="res://Scenes/Modules/module4.tscn" id="5_ynf5e"]
-[ext_resource type="Script" uid="uid://1y0xh884fm5j" path="res://Scripts/player.gd" id="6_6bp64"]
-[ext_resource type="ArrayMesh" uid="uid://drm6qofpliqj7" path="res://Assets/Characters/Models/OBJ format/character-male-d.obj" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://ds2xeo17skaag" path="res://Modules/module1.tscn" id="2_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bk57dafpujis8" path="res://Modules/module2.tscn" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://ql5sh1nnbdok" path="res://Modules/module3.tscn" id="4_344ge"]
+[ext_resource type="PackedScene" uid="uid://bmkxw5gfv6rjg" path="res://Modules/module4.tscn" id="5_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://dq5ajq2io385f" path="res://Modules/module5.tscn" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://blc72771hqqw6" path="res://Scenes/player.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dh02bes85pus5" path="res://Modules/module6.tscn" id="7_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cy0q5ba3gdb1p" path="res://Modules/module7.tscn" id="8_6iyac"]
+[ext_resource type="PackedScene" uid="uid://hdg0wan7ln21" path="res://Scenes/HUD.tscn" id="8_344ge"]
+[ext_resource type="Texture2D" uid="uid://coaih4cuc6rq" path="res://Assets/rogland_clear_night_4k.exr" id="8_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://05kejrd2adh6" path="res://Modules/module8.tscn" id="9_fdnlq"]
+[ext_resource type="AudioStream" uid="uid://dexl532orpo2p" path="res://Assets/Musique/Seeds of Growth (1111hz)  1 hour handpan music  Malte Marten.mp3" id="10_hptm8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hptm8"]
+panorama = ExtResource("8_ynf5e")
+
+[sub_resource type="Sky" id="Sky_d1ilt"]
+sky_material = SubResource("PanoramaSkyMaterial_hptm8")
 
 [sub_resource type="Environment" id="Environment_kry3j"]
+background_mode = 2
+sky = SubResource("Sky_d1ilt")
+fog_mode = 1
+fog_sun_scatter = 0.2
+fog_density = 1.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.03
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynf5e"]
-radius = 0.202034
-height = 0.404068
+volumetric_fog_density = 0.01
 
 [node name="Main" type="Node3D"]
 
-[node name="Level" type="Node3D" parent="."]
+[node name="Level" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 script = ExtResource("1_kry3j")
-modules = Array[PackedScene]([ExtResource("2_21xkr"), ExtResource("3_6bp64"), ExtResource("4_344ge"), ExtResource("5_ynf5e")])
+safe_modules = Array[PackedScene]([ExtResource("2_21xkr")])
+obstacle_modules = Array[PackedScene]([ExtResource("3_6bp64"), ExtResource("4_344ge"), ExtResource("5_ynf5e"), ExtResource("6_6bp64"), ExtResource("7_d1ilt"), ExtResource("8_6iyac"), ExtResource("9_fdnlq")])
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("6_21xkr")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kry3j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
-[node name="Player" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1)
-script = ExtResource("6_6bp64")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = ExtResource("7_344ge")
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("8_344ge")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169095, 0)
-shape = SubResource("CapsuleShape3D_ynf5e")
-
-[node name="RayCast3D" type="RayCast3D" parent="Player"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0.15553, 0.0364504)
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.303851, 0.0998178)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_hptm8")
+volume_db = -10.0
+autoplay = true
